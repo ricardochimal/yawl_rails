@@ -1,4 +1,4 @@
 module YawlRails
-  class ApplicationController < ActionController::Base
+  class ApplicationController < YawlRails.application_controller_class
   end
 end
