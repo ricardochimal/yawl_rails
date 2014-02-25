@@ -9,3 +9,4 @@ spec/test_app/.sass-cache
 *.gem
 Gemfile.lock
 .env
+*.swp
