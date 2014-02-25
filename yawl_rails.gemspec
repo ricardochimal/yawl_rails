@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails"
   spec.add_dependency "yawl", "~> 0.2.0"
-  spec.add_dependency "haml-rails"
+  spec.add_dependency "haml"
 
   spec.add_development_dependency "pg"
   spec.add_development_dependency "rspec-rails"
