@@ -11,13 +11,13 @@ module YawlRails
 
     config.active_record.schema_format = :sql
 
-    initializer :append_migrations do |app|
+    initializer "yawl_rails.append_migrations" do |app|
       unless app.root.to_s.match root.to_s
         app.config.paths["db/migrate"] += config.paths["db/migrate"].expanded
       end
     end
 
-    initializer :setup_yawl do |app|
+    initializer "yawl_rails.setup_yawl" do |app|
       require "yawl/rails"
     end
   end
