@@ -1,0 +1,12 @@
+- @process.steps.each do |step|
+  %tr.step{:id => "step-#{step.seq}"}
+    %td= link_to step.seq, yawl_process_step_path(@process.id, step.id)
+    %td
+      = step.name
+      - if step.state == "failed" && @process.current?
+        = link_to "<i class='icon-refresh icon-white'></i> Retry".html_safe, restart_yawl_process_path(@process.id), :method => :post, :class => "btn btn-mini btn-primary"
+    %td.step-state= step.state
+    %td= step.attempts.count
+    %td
+      - if step.attempts.count > 0
+        = "%.1fs" % step.duration

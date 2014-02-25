@@ -1,0 +1,19 @@
+%h2 Recent Processes
+
+- if @processes.count == 0
+  %p No processes yet.
+- else
+  %table#processes.table
+    %thead
+      %tr
+        %th #
+        %th Desired State
+        %th State
+        %th Started at
+    %tbody
+      - @processes.each do |p|
+        %tr{:id => "process-#{p.name}"}
+          %td= link_to p.name, yawl_process_path(p.id)
+          %td= p.desired_state
+          %td= p.state
+          %td= p.created_at

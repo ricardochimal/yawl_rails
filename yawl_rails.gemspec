@@ -24,4 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "haml-rails"
 
   spec.add_development_dependency "pg"
+  spec.add_development_dependency "rspec-rails"
 end

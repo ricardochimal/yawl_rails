@@ -1,0 +1,17 @@
+%h1= link_to "Process #{@process.name}", yawl_process_path(@process.id)
+
+%h2= "Step #{@step.seq}: #{@step.name}"
+
+- if @step.attempts.count == 0
+  %p No attempts yet.
+- else
+  - @step.attempts.reverse.each do |attempt|
+    %h3= "Attempt at #{attempt.started_at}"
+    - if attempt.completed_at
+      %p= "Completed at #{attempt.completed_at}"
+      %pre.pre-scrollable.step-output
+        = preserve do
+          - attempt.output.lines.each do |line|
+            = line
+    - else
+      %p Not completed yet.

@@ -1,0 +1,35 @@
+%h1= "Process #{@process.name}"
+
+%dl.dl-horizontal
+  %dt Request ID
+  %dd= @process.request_id || "-"
+
+  %dt Config
+  %dd
+    %pre
+      = preserve do
+        = pretty_print_hash(@process.config)
+
+  %dt State
+  %dd= @process.state
+
+
+.progress.progress-striped.active
+  .bar#process-progress{:style => "width: 0%;"}
+
+%table#steps.table
+  %thead
+    %tr
+      %th #
+      %th Name
+      %th State
+      %th Attempts
+      %th Duration
+  %tbody
+    = render 'step_rows'
+
+- content_for :javascripts do
+  = javascript_include_tag 'yawl/processes'
+  :javascript
+    YawlProcess.url = "#{steps_yawl_process_path(@process.id)}";
+    YawlProcess.init();
