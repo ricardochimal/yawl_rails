@@ -1,4 +1,4 @@
 module YawlRails
-  class ApplicationController < YawlRails.application_controller_class
+  class ApplicationController < ::YawlRails.parent_controller.constantize
   end
 end
