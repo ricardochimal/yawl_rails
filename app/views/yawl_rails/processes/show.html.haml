@@ -28,8 +28,4 @@
   %tbody
     = render 'step_rows'
 
-- content_for :javascripts do
-  = javascript_include_tag 'yawl/processes'
-  :javascript
-    YawlProcess.url = "#{steps_yawl_process_path(@process.id)}";
-    YawlProcess.init();
+= render 'show_inline_js"
