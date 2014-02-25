@@ -3,7 +3,7 @@ require_dependency "yawl_rails/application_controller"
 module YawlRails
   class ProcessesController < ApplicationController
     def index
-      @processes = Yawl::Process.order(:id).reverse
+      @processes = ::Yawl::Process.order(:id).reverse
 
       respond_to do |format|
         format.html
@@ -12,7 +12,7 @@ module YawlRails
     end
 
     def show
-      @process = Yawl::Process.first(:id => params[:id])
+      @process = ::Yawl::Process.first(:id => params[:id])
 
       respond_to do |format|
         format.html
@@ -21,7 +21,7 @@ module YawlRails
     end
 
     def restart
-      @process = Yawl::Process.first(:id => params[:id])
+      @process = ::Yawl::Process.first(:id => params[:id])
       @process.start_first_unfinished_step
 
       respond_to do |format|
@@ -31,7 +31,7 @@ module YawlRails
     end
 
     def steps
-      @process = Yawl::Process.first(:id => params[:id])
+      @process = ::Yawl::Process.first(:id => params[:id])
 
       respond_to do |format|
         format.html { render :partial => "step_rows" }
