@@ -20,9 +20,5 @@ module YawlRails
     initializer "yawl_rails.setup_yawl" do |app|
       require "yawl/rails"
     end
-
-    initializer "yawl_rails.static_assets" do |app|
-      app.config.paths["public/javascripts"] << config.paths["public/javascripts"].expanded
-    end
   end
 end
