@@ -13,7 +13,7 @@ module YawlRails
 
     initializer "yawl_rails.append_migrations" do |app|
       unless app.root.to_s.match root.to_s
-        app.config.paths["db/migrate"] += config.paths["db/migrate"].expanded
+        app.config.paths["db/migrate"] << config.paths["db/migrate"].expanded
       end
     end
 
@@ -22,7 +22,7 @@ module YawlRails
     end
 
     initializer "yawl_rails.static_assets" do |app|
-      app.config.paths["public/javascripts"] += "#{root}/public/javascripts"
+      app.config.paths["public/javascripts"] << config.paths["public/javascripts"].expanded
     end
   end
 end
