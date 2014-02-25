@@ -22,7 +22,7 @@ module YawlRails
     end
 
     initializer "yawl_rails.static_assets" do |app|
-      app.middleware.use ::ActionDispatch::Static, "#{root}/public"
+      app.config.paths["public/javascripts"] += "#{root}/public/javascripts"
     end
   end
 end
