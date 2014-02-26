@@ -11,7 +11,13 @@ module YawlRails
 
     initializer "yawl_rails.append_migrations" do |app|
       unless app.root.to_s.match root.to_s
-        app.config.paths["db/migrate"] += config.paths["db/migrate"].expanded
+        if Rails::VERSION::MAJOR >= 4
+          config.paths["db/migrate"].expanded.each do |expanded_path|
+            app.config.paths["db/migrate"] << expanded_path
+          end
+        else
+          app.config.paths["db/migrate"] += config.paths["db/migrate"].expanded
+        end
       end
     end
 
