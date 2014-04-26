@@ -2,6 +2,8 @@ require_dependency "yawl_rails/application_controller"
 
 module YawlRails
   class ProcessesController < ApplicationController
+    before_filter :load_process, only: [:show, :restart, :steps]
+
     def index
       @processes = ::Yawl::Process.order(:id).reverse
 
@@ -12,8 +14,6 @@ module YawlRails
     end
 
     def show
-      @process = ::Yawl::Process.first(:id => params[:id])
-
       respond_to do |format|
         format.html
         format.json { render :json => @process.to_hash.merge(:steps => @process.steps.map(&:to_hash)) }
@@ -21,7 +21,6 @@ module YawlRails
     end
 
     def restart
-      @process = ::Yawl::Process.first(:id => params[:id])
       @process.start_first_unfinished_step
 
       respond_to do |format|
@@ -31,12 +30,16 @@ module YawlRails
     end
 
     def steps
-      @process = ::Yawl::Process.first(:id => params[:id])
-
       respond_to do |format|
         format.html { render :partial => "step_rows" }
         format.json { render :json => @process.to_hash.merge(:steps => @process.steps.map(&:to_hash)) }
       end
     end
+  end
+
+  protected
+
+  def load_process
+    @process ::Yawl::Process.first(:name => params[:id])
   end
 end

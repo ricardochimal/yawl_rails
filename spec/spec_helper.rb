@@ -1,5 +1,5 @@
 ENV['RAILS_ENV'] ||= 'test'
-ENV['DATABASE_URL'] = 'postgres://localhost/yawl-rails-test'
+ENV['DATABASE_URL'] ||= 'postgres://localhost/yawl-rails-test'
 
 require File.expand_path("../test_app/config/environment.rb",  __FILE__)
 require 'rspec/rails'
