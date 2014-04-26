@@ -13,7 +13,7 @@
     %tbody
       - @processes.each do |p|
         %tr{:id => "process-#{p.name}"}
-          %td= link_to p.name, yawl_process_path(p.id)
+          %td= link_to p.name, yawl_process_path(p.name)
           %td= p.desired_state
           %td= p.state
           %td= p.created_at
