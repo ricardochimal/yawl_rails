@@ -19,5 +19,15 @@ module YawlRails
         assigns(:processes).map(&:id).should match_array([@p2, @p1])
       end
     end
+
+    describe "GET #show" do
+      it "shows the process" do
+        @p1 = ::Yawl::Process.insert(:desired_state => "test1", :name => "p1-test")
+
+        get :show, id: "p1-test",  use_route: :yawl_rails
+
+        expect(response).to be_success
+      end
+    end
   end
 end

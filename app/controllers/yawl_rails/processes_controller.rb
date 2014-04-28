@@ -35,11 +35,11 @@ module YawlRails
         format.json { render :json => @process.to_hash.merge(:steps => @process.steps.map(&:to_hash)) }
       end
     end
-  end
 
-  protected
+    protected
 
-  def load_process
-    @process ::Yawl::Process.first(:name => params[:id])
+    def load_process
+      @process = ::Yawl::Process.first(:name => params[:id])
+    end
   end
 end
