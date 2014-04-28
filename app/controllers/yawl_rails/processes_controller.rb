@@ -40,6 +40,13 @@ module YawlRails
 
     def load_process
       @process = ::Yawl::Process.first(:name => params[:id])
+      if @process.nil?
+        respond_to do |format|
+          format.html { render :text => "Process not found", :status => 404 }
+          format.json { render :json => { "error" => "Process not found" }, :status => 404 }
+        end
+        false
+      end
     end
   end
 end

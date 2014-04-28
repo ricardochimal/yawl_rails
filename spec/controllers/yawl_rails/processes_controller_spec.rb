@@ -24,9 +24,17 @@ module YawlRails
       it "shows the process" do
         @p1 = ::Yawl::Process.insert(:desired_state => "test1", :name => "p1-test")
 
-        get :show, id: "p1-test",  use_route: :yawl_rails
+        get :show, id: "p1-test", use_route: :yawl_rails
 
         expect(response).to be_success
+        expect(response).to render_template("show")
+      end
+
+      it "returns a 404 for an unknown process" do
+        get :show, id: "unknown-test", use_route: :yawl_rails
+
+        expect(response.code).to eq("404")
+        expect(response).to_not render_template("show")
       end
     end
   end
