@@ -5,7 +5,8 @@ module YawlRails
     before_filter :load_process, only: [:show, :restart, :steps]
 
     def index
-      @processes = ::Yawl::Process.pagination_dataset.order(:id).reverse.paginate(params[:page] || 1, Yawl::Config.pagination_per_page)
+      page = (params[:page] || 1).to_i
+      @processes = ::Yawl::Process.pagination_dataset.order(:id).reverse.paginate(page, Yawl::Config.pagination_per_page)
 
       respond_to do |format|
         format.html
