@@ -17,3 +17,6 @@
           %td= p.desired_state
           %td= p.state
           %td= p.created_at
+
+- if @processes.page_count > 1
+  = render 'pagination', objects: @processes

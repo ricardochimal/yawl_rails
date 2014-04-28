@@ -24,5 +24,10 @@ module YawlRails
     initializer "yawl_rails.setup_yawl" do |app|
       require "yawl/rails"
     end
+
+    initializer "yawl_rails.setup_pagination" do |app|
+      require "yawl/pagination"
+      Yawl::Config.pagination_per_page ||= Yawl::Config::DEFAULT_PAGINATION_PER_PAGE
+    end
   end
 end

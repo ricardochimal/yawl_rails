@@ -5,6 +5,11 @@ require File.expand_path("../test_app/config/environment.rb",  __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 
+require 'capybara/rails'
+require 'capybara/rspec'
+
+Yawl::Config.pagination_per_page = 2
+
 Rails.backtrace_cleaner.remove_silencers!
 
 # Load support files
