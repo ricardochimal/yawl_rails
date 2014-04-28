@@ -2,4 +2,4 @@
   %ul
     - objects.page_range.each do |page|
       %li
-        %a{:href => "?page=#{p}", :class => (objects.current_page == page ? 'active' : '')}= page
+        %a{:href => "?page=#{page}", :class => (objects.current_page == page ? 'active' : '')}= page

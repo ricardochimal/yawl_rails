@@ -15,5 +15,9 @@ feature "List Processes" do
 
     visit yawl_rails.yawl_processes_path
     expect(page).to have_selector(".pagination")
+    expect(find(".pagination")).to have_link("1", href: "?page=1")
+    expect(find(".pagination")).to have_link("2", href: "?page=2")
+    expect(find(".pagination")).to_not have_link("3", href: "?page=3")
+    expect(find(".pagination")).to_not have_link("0", href: "?page=0")
   end
 end
