@@ -4,6 +4,10 @@ This is the UI and Rails integration component of [yawl](https://github.com/rica
 
 ## Install Migrations
 
+For rails versions >= 4, the engine should automatically hook into Rails and allow you to *just* run `rake db:migrate`.
+
+For rails 3, migrations should be installed in the target app:
+
 ```
 rake yawl_rails:install:migrations
 ```
