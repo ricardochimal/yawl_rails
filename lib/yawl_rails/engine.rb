@@ -15,8 +15,6 @@ module YawlRails
           config.paths["db/migrate"].expanded.each do |expanded_path|
             app.config.paths["db/migrate"] << expanded_path
           end
-        else
-          app.config.paths["db/migrate"] += config.paths["db/migrate"].expanded
         end
       end
     end
