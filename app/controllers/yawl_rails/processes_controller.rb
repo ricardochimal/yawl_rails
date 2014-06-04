@@ -25,8 +25,8 @@ module YawlRails
       @process.start_first_unfinished_step
 
       respond_to do |format|
-        format.html { redirect_to yawl_process_path(@process.id), :status => 303 }
-        format.json { render :json => @process.to_hash, :location => yawl_process_url(@process.id) }
+        format.html { redirect_to yawl_process_path(@process.name), :status => 303 }
+        format.json { render :json => @process.to_hash, :location => yawl_process_url(@process.name) }
       end
     end
 
